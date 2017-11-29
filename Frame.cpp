@@ -14,6 +14,7 @@ Frame::~Frame() {
 }
 
 void Frame::setPixel(int x, int y, byte r, byte g, byte b) {
+	if (x < 0 || x >= w || y < 0 || y >= h) return;
 	pixels[y * w * 3 + x * 3 + 0] = r;
 	pixels[y * w * 3 + x * 3 + 1] = g;
 	pixels[y * w * 3 + x * 3 + 2] = b;
