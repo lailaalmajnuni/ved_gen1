@@ -6,15 +6,17 @@
 #include <cstring>
 #include "global.h"
 #include "Frame.h"
+#include "Image.h"
 #include "Rectangle.h"
 #include <cerrno>
+#include "Font.h"
 
 using namespace std;
 
 const double frames_per_second = 30; 
-const int duration_in_seconds = 3;
+const int duration_in_seconds = 5;
 
-Frame frame(720, 480);
+Frame frame(370, 240);
 
 int main(int argc, char * argv[]) {
 	// Construct the ffmpeg command to run.
@@ -24,7 +26,7 @@ int main(int argc, char * argv[]) {
 		"-hide_banner        "
 		"-f rawvideo         " // input to be raw video data
 		"-pixel_format rgb24 "
-		"-video_size 720x480 "
+		"-video_size 370x240 "
 		"-r 60               " // frames per second
 		"-i -                " // read data from the standard input stream
 		"-pix_fmt yuv420p    " // to render with Quicktime
@@ -47,12 +49,58 @@ int main(int argc, char * argv[]) {
 	// Write video frames into the pipe.
 	
 	int num_frames = duration_in_seconds * frames_per_second;
-	Rectangle r(100, 50, 225, 0, 100, 0, 0);
-	r.setVelocity(50, 50);
+/*	
+	Rectangle r1 (100, 50, 225, 0, 100, 30, 30);
+	r1.setVelocity(50, 50);
+
+    Rectangle r2 (75, 25, 0, 225, 50, 290, 30);
+	r2.setVelocity(0, 50);
+
+    Rectangle r3 (125, 70, 50, 0, 225, 550, 30);
+	r3.setVelocity(50, 0);
 	for (int i = 0; i < num_frames; ++i) {
 		double time_in_seconds = i / frames_per_second;
 		frame.clear();
-		r.draw(1/frames_per_second);
+		r1.draw();
+		r1.update(time_in_seconds);
+		r2.draw();
+		r2.update(time_in_seconds);
+		r3.draw();
+		r3.update(time_in_seconds);
+		frame.write(pipe);
+	}
+
+	Image image1;
+	image1.load("1.bmp", 202, 151);
+	image1.setVelocity(50, 50);
+
+	Image image2;
+	image2.load("2.bmp", 144, 180);
+	image2.setVelocity(50, 10);
+
+	Image image3;
+	image3.load("3.bmp", 150, 185);
+	image3.setVelocity(10, 50);
+
+	for (int i = 0; i < num_frames; ++i) {
+		double time_in_seconds = i / frames_per_second;
+		frame.clear();
+		image1.update(time_in_seconds);
+		image1.draw();
+		image2.update(time_in_seconds);
+		image2.draw();
+		image3.update(time_in_seconds);
+		image3.draw();
+		frame.write(pipe);
+	}
+*/
+	Font font;
+
+	for (int i = 0; i < num_frames; ++i) {
+		frame.clear();
+		stringstream elapseSeconds;
+		elapseSeconds << (int) (i / frames_per_second);
+		font.draw(elapseSeconds.str(), 170, 90);
 		frame.write(pipe);
 	}
 
