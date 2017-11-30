@@ -13,13 +13,14 @@ void Image::load( const char * filename, int w, int h ) {
     this->h = h;
 
     pixels = new byte[w * h * 3];
+
     std::stringstream ss;
     ss << "ffmpeg ";
-    ss << " -i " << filename << " ";
-    ss << " -f rawvideo ";
+    ss << "-i " << filename << " ";
+    ss << "-f rawvideo ";
     ss << "-pix_fmt rgb24 ";
-    ss << " -vf scale=" << w << "*" << h << " ";
-    ss << "- ";
+    ss << "-vf scale=" << w << "*" << h << " ";
+    ss << "-";
 
 #ifdef _WIN32
 	FILE * pipe = _popen(ss.str().c_str(), "rb");
@@ -41,9 +42,8 @@ void Image::load( const char * filename, int w, int h ) {
 }
 
 void Image::draw() const{
-   // if (frame.isOutside(x, y)) return;
-    for(int i=0; i<w; ++i){
-        for(int j=0; j<h; ++j){
+    for (int i = 0; i < w; ++i) {
+        for (int j = 0; j < h; ++j) {
             byte r = pixels[j * w * 3 + i * 3 + 0];
             byte g = pixels[j * w * 3 + i * 3 + 1];
             byte b = pixels[j * w * 3 + i * 3 + 2];
