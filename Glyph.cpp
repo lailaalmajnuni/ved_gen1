@@ -87,58 +87,13 @@ Glyph::Glyph(char c){
         int yOffset  = 8;
         int xAdvance = 28;
     }
-    else if (c == '9'){
+       else { //9
         int fx = 216;
         int fy = 98;
         int fw = 30;
         int fh = 42;
         int xOffset  = 4;
         int yOffset  = 8;
-        int xAdvance = 28;
-    }
-    else if (c == ':'){
-        int fx = 298;
-        int fy = 258;
-        int fw = 16;
-        int fh = 30;
-        int xOffset  = 3;
-        int yOffset  = 20;
-        int xAdvance = 14;
-    }
-    else if (c == 'A'){
-        int fx = 160;
-        int fy = 56;
-        int fw = 36;
-        int fh = 40;
-        int xOffset  = -1;
-        int yOffset  = 10;
-        int xAdvance = 34;
-    }
-    else if (c == 'p'){
-        int fx = 84;
-        int fy = 186;
-        int fw = 32;
-        int fh = 42;
-        int xOffset  = 0;
-        int yOffset  = 17;
-        int xAdvance = 28;
-    }
-    else if (c == 'l'){
-        int fx = 264;
-        int fy = 258;
-        int fw = 16;
-        int fh = 40;
-        int xOffset  = 2;
-        int yOffset  = 10;
-        int xAdvance = 12;
-    }
-    else { //e
-        int fx = 328;
-        int fy = 184;
-        int fw = 28;
-        int fh = 32;
-        int xOffset  = 3;
-        int yOffset  = 18;
         int xAdvance = 28;
     }
 }
