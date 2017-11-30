@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <cstring>
 #include "Frame.h"
-#include "Rectangle.h"
 
 Frame::Frame(int w, int h)  { 
     this->w = w;
