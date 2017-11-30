@@ -14,9 +14,9 @@
 using namespace std;
 
 const double frames_per_second = 30; 
-const int duration_in_seconds = 5;
+const int duration_in_seconds = 3;
 
-Frame frame(370, 240);
+Frame frame(640, 480);
 
 int main(int argc, char * argv[]) {
 	// Construct the ffmpeg command to run.
@@ -26,7 +26,7 @@ int main(int argc, char * argv[]) {
 		"-hide_banner        "
 		"-f rawvideo         " // input to be raw video data
 		"-pixel_format rgb24 "
-		"-video_size 370x240 "
+		"-video_size 640x480 "
 		"-r 60               " // frames per second
 		"-i -                " // read data from the standard input stream
 		"-pix_fmt yuv420p    " // to render with Quicktime
@@ -46,17 +46,16 @@ int main(int argc, char * argv[]) {
 		return 1;
 	}
      
-	// Write video frames into the pipe.
 	
 	int num_frames = duration_in_seconds * frames_per_second;
-/*	
+	
 	Rectangle r1 (100, 50, 225, 0, 100, 30, 30);
 	r1.setVelocity(50, 50);
-
-    Rectangle r2 (75, 25, 0, 225, 50, 290, 30);
+	
+	Rectangle r2 (75, 25, 0, 225, 50, 290, 30);
 	r2.setVelocity(0, 50);
 
-    Rectangle r3 (125, 70, 50, 0, 225, 550, 30);
+  	Rectangle r3 (125, 70, 50, 0, 225, 550, 30);
 	r3.setVelocity(50, 0);
 	for (int i = 0; i < num_frames; ++i) {
 		double time_in_seconds = i / frames_per_second;
@@ -71,15 +70,15 @@ int main(int argc, char * argv[]) {
 	}
 
 	Image image1;
-	image1.load("1.bmp", 202, 151);
+	image1.load("1.bmp", 200, 150);
 	image1.setVelocity(50, 50);
 
 	Image image2;
-	image2.load("2.bmp", 144, 180);
+	image2.load("2.bmp", 200, 250);
 	image2.setVelocity(50, 10);
 
 	Image image3;
-	image3.load("3.bmp", 150, 185);
+	image3.load("3.bmp", 200, 247);
 	image3.setVelocity(10, 50);
 
 	for (int i = 0; i < num_frames; ++i) {
@@ -93,17 +92,17 @@ int main(int argc, char * argv[]) {
 		image3.draw();
 		frame.write(pipe);
 	}
-*/
-	Font font;
+
+		Font font;
 
 	for (int i = 0; i < num_frames; ++i) {
 		frame.clear();
 		stringstream elapseSeconds;
 		elapseSeconds << (int) (i / frames_per_second);
-		font.draw(elapseSeconds.str(), 170, 90);
+	font.draw(elapseSeconds.str(), 170, 90);
 		frame.write(pipe);
 	}
-
+	
 	fflush(pipe);
 #ifdef _WIN32
 	_pclose(pipe);
