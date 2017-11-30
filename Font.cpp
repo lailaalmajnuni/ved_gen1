@@ -47,7 +47,7 @@ void Font::draw(const string & text, double x, double y) const {
 				byte r = pixels[(gly.fy + k) * w * 3 + (gly.fx + j) * 3 + 0];
 				byte g = pixels[(gly.fy + k) * w * 3 + (gly.fx + j) * 3 + 1];
 				byte b = pixels[(gly.fy + k) * w * 3 + (gly.fx + j) * 3 + 2];
-				frame.setPixel(x + j, y + k, r, g, b);
+				frame.setPixel(gly.xOffset + x + j, gly.yOffset + y + k, r, g, b);
 			}
 		}
 		x += gly.xAdvance;
