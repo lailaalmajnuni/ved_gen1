@@ -58,6 +58,6 @@ void Image::setVelocity(double dx, double dy) {
 }
 
 void Image::update(double dt){
-	this->x = this->dx * dt;
-	this->y = this->dy * dt;
+    x += dx * dt;
+	y += dy * dt;
 }
