@@ -9,17 +9,16 @@
 #include "Image.h"
 #include "Rectangle.h"
 #include <cerrno>
-#include "Font.h"
+#include "Clock.h"
 
 using namespace std;
 
-const double frames_per_second = 30; 
-const int duration_in_seconds = 3;
+const double frames_per_second = 60; 
+const int duration_in_seconds = 10;
 
 Frame frame(640, 480);
 
 int main(int argc, char * argv[]) {
-	// Construct the ffmpeg command to run.
 	const char * cmd = 
 		"ffmpeg              "
 		"-y                  "
@@ -46,63 +45,45 @@ int main(int argc, char * argv[]) {
 		return 1;
 	}
      
+	// Write video frames into the pipe.
 	
 	int num_frames = duration_in_seconds * frames_per_second;
-	
-	Rectangle r1 (100, 50, 225, 0, 100, 30, 30);
-	r1.setVelocity(50, 50);
-	
-	Rectangle r2 (75, 25, 0, 225, 50, 290, 30);
-	r2.setVelocity(0, 50);
 
-  	Rectangle r3 (125, 70, 50, 0, 225, 550, 30);
-	r3.setVelocity(50, 0);
+	Clock clock(20,30);
+	
+	Rectangle r1 (150, 100, 225, 0, 100, 30, 30);
+	r1.setVelocity(95, 95);
+
+    Rectangle r2 (125, 75, 0, 225, 50, 290, 30);
+	r2.setVelocity(80, 50);
+
+	Image image1;
+	image1.load("1.bmp", 100, 75);
+	image1.setVelocity(0, 70);
+
+	Image image2;
+	image2.load("2.bmp", 100, 125);
+	image2.setVelocity(70, 0);
+
+	double dt = 1.0/frames_per_second;
 	for (int i = 0; i < num_frames; ++i) {
 		double time_in_seconds = i / frames_per_second;
 		frame.clear();
 		r1.draw();
-		r1.update(time_in_seconds);
+		r1.update(dt);
 		r2.draw();
-		r2.update(time_in_seconds);
-		r3.draw();
-		r3.update(time_in_seconds);
-		frame.write(pipe);
-	}
+		r2.update(dt);
 
-	Image image1;
-	image1.load("1.bmp", 200, 150);
-	image1.setVelocity(50, 50);
-
-	Image image2;
-	image2.load("2.bmp", 200, 250);
-	image2.setVelocity(50, 10);
-
-	Image image3;
-	image3.load("3.bmp", 200, 247);
-	image3.setVelocity(10, 50);
-
-	for (int i = 0; i < num_frames; ++i) {
-		double time_in_seconds = i / frames_per_second;
-		frame.clear();
-		image1.update(time_in_seconds);
+		image1.update(dt);
 		image1.draw();
-		image2.update(time_in_seconds);
+		image2.update(dt);
 		image2.draw();
-		image3.update(time_in_seconds);
-		image3.draw();
+
+		clock.update(dt);
+		clock.draw();
 		frame.write(pipe);
 	}
 
-		Font font;
-
-	for (int i = 0; i < num_frames; ++i) {
-		frame.clear();
-		stringstream elapseSeconds;
-		elapseSeconds << (int) (i / frames_per_second);
-	font.draw(elapseSeconds.str(), 170, 90);
-		frame.write(pipe);
-	}
-	
 	fflush(pipe);
 #ifdef _WIN32
 	_pclose(pipe);
