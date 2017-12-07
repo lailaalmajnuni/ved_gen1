@@ -25,75 +25,75 @@ Glyph::Glyph(char c){
         xAdvance = 28;
     }
     else if (c == '2'){
-        int fx = 178;
-        int fy = 142;
-        int fw = 30;
-        int fh = 40;
-        int xOffset  = 3;
-        int yOffset  = 10;
-        int xAdvance = 28;
+        fx = 178;
+        fy = 142;
+        fw = 30;
+        fh = 40;
+        xOffset  = 3;
+        yOffset  = 10;
+        xAdvance = 28;
     }
     else if (c == '3'){
-        int fx = 312;
-        int fy = 98;
-        int fw = 30;
-        int fh = 42;
-        int xOffset  = 3;
-        int yOffset  = 8;
-        int xAdvance = 28;
+        fx = 312;
+        fy = 98;
+        fw = 30;
+        fh = 42;
+        xOffset  = 3;
+        yOffset  = 8;
+        xAdvance = 28;
     }
     else if (c == '4'){
-        int fx = 146;
-        int fy = 320;
-        int fw = 30;
-        int fh = 40;
-        int xOffset  = 3;
-        int yOffset  = 10;
-        int xAdvance = 28;
+        fx = 146;
+        fy = 320;
+        fw = 30;
+        fh = 40;
+        xOffset  = 3;
+        yOffset  = 10;
+        xAdvance = 28;
     }
     else if (c == '5'){
-        int fx = 146;
-        int fy = 278;
-        int fw = 30;
-        int fh = 42;
-        int xOffset  = 4;
-        int yOffset  = 10;
-        int xAdvance = 28;
+        fx = 146;
+        fy = 278;
+        fw = 30;
+        fh = 42;
+        xOffset  = 4;
+        yOffset  = 10;
+        xAdvance = 28;
     }
     else if (c == '6'){
-        int fx = 280;
-        int fy = 98;
-        int fw = 30;
-        int fh = 42;
-        int xOffset  = 5;
-        int yOffset  = 8;
-        int xAdvance = 28;
+        fx = 280;
+        fy = 98;
+        fw = 30;
+        fh = 42;
+        xOffset  = 5;
+        yOffset  = 8;
+        xAdvance = 28;
     }
     else if (c == '7'){
-        int fx = 210;
-        int fy = 142;
-        int fw = 28;
-        int fh = 40;
-        int xOffset  = 7;
-        int yOffset  = 10;
-        int xAdvance = 28;
+        fx = 210;
+        fy = 142;
+        fw = 28;
+        fh = 40;
+        xOffset  = 7;
+        yOffset  = 10;
+        xAdvance = 28;
     }
     else if (c == '8'){
-        int fx = 248;
-        int fy = 98;
-        int fw = 30;
-        int fh = 42;
-        int xOffset  = 4;
-        int yOffset  = 8;
-        int xAdvance = 28;
+        fx = 248;
+        fy = 98;
+        fw = 30;
+        fh = 42;
+        xOffset  = 4;
+        yOffset  = 8;
+        xAdvance = 28;
     }
        else { //9
-        int fx = 216;
-        int fy = 98;
-        int fw = 30;
-        int fh = 42;
-        int xOffset  = 4;
-        int yOffset  = 8;
-        int xAdvance = 28;
+        fx = 216;
+        fy = 98;
+        fw = 30;
+        fh = 42;
+        xOffset  = 4;
+        yOffset  = 8;
+        xAdvance = 28;
     }
 }
