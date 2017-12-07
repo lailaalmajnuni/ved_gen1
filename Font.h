@@ -1,12 +1,12 @@
 #pragma once
-#include "Glyph.h"
+
 #include <string>
 
 using namespace std;
 
 typedef unsigned char byte;
 
-class Font {
+class Font { 
 public:
 	Font();
 	~Font() { delete [] pixels; }
@@ -14,8 +14,6 @@ public:
 
 private:
 	byte * pixels;
-	int w;  
-    int h;  
-    
-    friend class Glyph;
+	int w;  // width of font image in pixels
+	int h;  // height of font image in pixels
 };
