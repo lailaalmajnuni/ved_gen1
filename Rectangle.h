@@ -1,10 +1,15 @@
 #pragma once
-#include "global.h"
 
-class Rectangle {
+#include "global.h"
+#include "Object.h"
+
+class Rectangle : public Object {
 public:
     Rectangle(int w, int h, byte r, byte g, byte b, int x, int y);
-    void draw(double dt);
+
+    virtual void draw() const;
+    virtual void update(double dt);
+
     void setVelocity(double dx, double dy);
 private:
     int w;
