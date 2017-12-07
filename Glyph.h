@@ -11,7 +11,7 @@ private:
     Glyph(char c);
     int fx;
     int fy;
-	int fw;  
+    int fw;  
     int fh;
     int xOffset;
     int yOffset;
