@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdio.h>
 
 #include "global.h"
@@ -15,5 +16,5 @@ public:
 private:
     int w;
     int h;
-	unsigned char * pixels;
+    unsigned char * pixels;
 };
