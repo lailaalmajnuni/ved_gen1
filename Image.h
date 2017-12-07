@@ -6,7 +6,7 @@ typedef unsigned char byte;
 
 class Image : public Object{
 public:
- 	Image() : pixels(0), w(0), h(0), x(0), y(0) { }
+    Image() : pixels(0), w(0), h(0), x(0), y(0) { }
     ~Image() { delete [] pixels; }
 
     virtual void draw() const;
@@ -23,5 +23,4 @@ private:
     int h;
     int dx;
     int dy;
-    double dt;
 };
